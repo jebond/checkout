@@ -11,6 +11,7 @@
         "require": {
         "vlucas/phpdotenv": "~2.0.1",
         "kriswallsmith/buzz":"v0.15",
-        "altorouter/altorouter": "1.1.0"
+        "altorouter/altorouter": "1.1.0",
+        "twbs/bootstrap": "^4.1"
     }
 }
