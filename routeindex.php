@@ -16,9 +16,6 @@ switch ($request_uri[0]) {
         require 'app/views/action.php';
         break;
     // Everything else
-    case '/checkoutbs':
-        require 'app/views/checkoutbs.php';
-        break;
     default:
         header('HTTP/1.0 404 Not Found');
         require 'app/views/404.php';
