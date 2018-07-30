@@ -12,6 +12,8 @@
         "vlucas/phpdotenv": "~2.0.1",
         "kriswallsmith/buzz":"v0.15",
         "twbs/bootstrap": "^4.1",
-        "components/jquery": "^3.3"
+        "components/jquery": "^3.3",
+        "altorouter/altorouter": "1.1.0"
+
     }
 }

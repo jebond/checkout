@@ -1,10 +1,13 @@
 <?php
 
-namespace app\controllers{
+namespace controller{
 
-    class controller {
-        protected function index($orderid){
+    class checkoutController {
+        public function showcheckout($orderid){
             require '../views/checkout.php';
     }
+        public function notfound() {
+            require '../views/404.php';
+        }
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\system {
+namespace system {
 
     require 'vendor/autoload.php';
 //uses mod_rewrite in .htaccess file to redirect all requests to routeindex.php
-    use app\controllers\controller;
+    use controller\checkoutController;
 // Grabs the URI and breaks it apart in case we have query string stuff
     $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
@@ -12,7 +12,12 @@ namespace app\system {
     switch ($request_uri[0]) {
         // main checkout
         case '/checkout':
-            $controller = new controller->index($request_uri[1]);
+            $controller = new checkoutController();
+            if(isset($request_uri[1])){
+                $controller->showcheckout($request_uri[1]);
+            } else {
+                $controller->notfound();
+            }
             break;
         // backend api endpoint
         case '/action':
