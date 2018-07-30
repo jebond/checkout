@@ -1,8 +1,8 @@
 <?php
 
-namespace controller{
+namespace controllers{
 
-    class checkoutController {
+    class checkout {
         public function showcheckout($orderid){
             require '../views/checkout.php';
     }
