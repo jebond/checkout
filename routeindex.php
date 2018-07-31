@@ -3,6 +3,7 @@
 namespace system {
     require 'vendor/autoload.php';
     use Controller\checkout;
+    use Controller\action;
     $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
 // Route it up!
@@ -14,12 +15,13 @@ namespace system {
                 $controller->showcheckout($request_uri[1]);
             } else {
                 $controller = new checkout();
-                $controller->notfound();
+                $controller->notfound("Order id not found");
             }
             break;
         // backend api endpoint
         case '/action':
-            require 'app/views/action.php';
+            $controller = new action();
+            $controller->batchsettlement();
             break;
         // Everything else
         default:

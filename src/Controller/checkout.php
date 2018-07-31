@@ -7,9 +7,9 @@ namespace Controller {
             require 'app/views/checkout.php';
         }
 
-        public function notfound()
+        public function notfound($message)
         {
-            require 'app/views/404.php';
+            require 'app/views/badrequest.php';
         }
     }
 }
