@@ -1,12 +1,8 @@
 <?php
 
 namespace system {
-
     require 'vendor/autoload.php';
-//uses mod_rewrite in .htaccess file to redirect all requests to routeindex.php
-    use controllers\checkout;
-    require_once ('app/controllers/checkout.php');
-// Grabs the URI and breaks it apart in case we have query string stuff
+    use Controller\checkout;
     $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
 // Route it up!
