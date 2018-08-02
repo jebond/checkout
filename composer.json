@@ -13,7 +13,8 @@
         "kriswallsmith/buzz":"v0.15",
         "twbs/bootstrap": "^4.1",
         "components/jquery": "^3.3",
-        "altorouter/altorouter": "1.1.0"
+        "altorouter/altorouter": "1.1.0",
+        "twig/twig": "1.35.4"
     },
     "autoload": {
         "psr-4": {

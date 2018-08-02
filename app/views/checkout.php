@@ -19,8 +19,8 @@
 <body class="bg-light">
 
 <div class="container">
-    <div class="py-5 text-center">
-        <p class="lead"><img src="assets/img/trollAndToadLogo.png"</p>
+    <div class="justify-content-center text-center">
+        <img src="assets/img/trollAndToadLogo.png" class="img-fluid" height="auto">
     </div>
 
     <div class="row">
