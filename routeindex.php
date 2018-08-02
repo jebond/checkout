@@ -5,12 +5,32 @@ namespace system {
     require 'vendor/autoload.php';
     use Controller\checkout;
     use Controller\action;
+    use AltoRouter;
     use Whoops\Handler\PrettyPageHandler;
     use Whoops\Run;
 
     $whoops = new Run();
     $whoops->pushHandler(new PrettyPageHandler());
     $whoops->register();
+
+    $router = new AltoRouter();
+
+// map homepage
+    try {
+
+        $router->map('GET', '/checkout/i:orderid/', function () {
+            $controller = new checkout();
+            $controller->showview($orderid);
+        });
+
+        $router->map('GET', '/action', function () {
+            $controller = new action();
+            $controller->batchsettlement();
+        });
+    }
+   catch (\Exception $e) {
+       throw new \RuntimeException("DAMN! You did it Now");
+    }
 
     //$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
