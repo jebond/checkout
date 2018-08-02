@@ -1,6 +1,7 @@
 <?php
 
 namespace system {
+
     require 'vendor/autoload.php';
     use Controller\checkout;
     use Controller\action;
@@ -10,11 +11,10 @@ namespace system {
     $whoops = new Run();
     $whoops->pushHandler(new PrettyPageHandler());
     $whoops->register();
-    throw new \RuntimeException("DAMN! You did it Now");
 
-    $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+    //$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
-// Route it up!
+/*// Route it up!
     switch ($request_uri[0]) {
         // main checkout
         case '/checkout':
@@ -35,5 +35,5 @@ namespace system {
             header('HTTP/1.0 404 Not Found');
             require 'app/views/404.php';
             break;
-    }
+    }*/
 }

@@ -1,0 +1,38 @@
+{
+    "name": "filp/whoops",
+    "license": "MIT",
+    "description": "php error handling for cool kids",
+    "keywords": ["library", "error", "handling", "exception", "whoops", "zf2"],
+    "homepage": "https://github.com/filp/whoops",
+    "authors": [
+        {
+            "name": "Filipe Dobreira",
+            "homepage": "https://github.com/filp",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "phpunit/phpunit": "^4.8"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+    "suggest": {
+        "symfony/var-dumper": "^2.6",
+        "whoops/soap": "Formats errors as SOAP responses"
+    },
+    "autoload": {
+        "psr-4": {
+            "Whoops\\": "src/Whoops/"
+        },
+        "files": [
+            "src/Whoops/functions.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
+}
