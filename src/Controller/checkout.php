@@ -1,8 +1,11 @@
 <?php
 namespace Controller {
-    class checkout
+
+    use Controller\ClassAbstract\AbsCkeckoutController;
+
+    class checkout extends AbsCkeckoutController
     {
-        public function showcheckout($orderid)
+        public function showview($orderid)
         {
             require 'app/views/checkout.php';
         }

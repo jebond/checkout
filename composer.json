@@ -14,7 +14,8 @@
         "twbs/bootstrap": "^4.1",
         "components/jquery": "^3.3",
         "altorouter/altorouter": "1.1.0",
-        "twig/twig": "1.35.4"
+        "twig/twig": "1.35.4",
+         "filp/whoops":"2.0.0-alpha1"
     },
     "autoload": {
         "psr-4": {

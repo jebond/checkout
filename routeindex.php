@@ -4,17 +4,24 @@ namespace system {
     require 'vendor/autoload.php';
     use Controller\checkout;
     use Controller\action;
+    use Whoops\Handler\PrettyPageHandler;
+    use Whoops\Run;
+
+    $whoops = new Run();
+    $whoops->pushHandler(new PrettyPageHandler());
+    $whoops->register();
+    throw new \RuntimeException("DAMN! You did it Now");
+
     $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
 // Route it up!
     switch ($request_uri[0]) {
         // main checkout
         case '/checkout':
+            $controller = new checkout();
             if(isset($request_uri[1])){
-                $controller = new checkout();
-                $controller->showcheckout($request_uri[1]);
+                $controller->showview($request_uri[1]);
             } else {
-                $controller = new checkout();
                 $controller->notfound("Order id not found");
             }
             break;
