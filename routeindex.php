@@ -1,17 +1,8 @@
 <?php
 
-namespace system {
-
     require 'vendor/autoload.php';
     use Controller\checkout;
     use Controller\action;
-    use Whoops\Handler\PrettyPageHandler;
-    use Whoops\Run;
-
-    $whoops = new Run();
-    $whoops->pushHandler(new PrettyPageHandler());
-    $whoops->register();
-
 
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
@@ -32,6 +23,9 @@ $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
             $controller = new action();
             $controller->batchsettlement();
             break;
+        case '/exception':
+            throw new \RuntimeException("DAMN! You did it Now");
+            break;
         // Everything else
         default:
             header('HTTP/1.0 404 Not Found');
@@ -42,4 +36,3 @@ $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
     catch (\Exception $e) {
         throw new \RuntimeException("DAMN! You did it Now");
     }
-}
