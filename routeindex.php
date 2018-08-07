@@ -61,5 +61,5 @@
 
     }
     catch (\Exception $e) {
-        throw new \RuntimeException("You did it Now");
+        throw new \RuntimeException($e->getMessage());
     }

@@ -6,6 +6,9 @@ namespace Controller {
 
     class checkout extends AbsCkeckoutController
     {
+        /**
+         * @param $orderid
+         */
         public function showview($orderid)
         {
             $loader = new \Twig_Loader_Filesystem('app/views');
