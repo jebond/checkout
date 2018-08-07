@@ -9,12 +9,18 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'ed250cec81cd1fa5b486e051fca67623' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/functions.php',
+        'bbf73f3db644d3dced353b837903e74c' => __DIR__ . '/..' . '/php-di/php-di/src/DI/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'Z' => 
+        array (
+            'Zend\\EventManager\\' => 18,
+            'Zend\\Code\\' => 10,
         ),
         'W' => 
         array (
@@ -30,10 +36,29 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
         ),
+        'P' => 
+        array (
+            'Psr\\Container\\' => 14,
+        ),
+        'M' => 
+        array (
+            'MyCLabs\\Enum\\' => 13,
+        ),
+        'K' => 
+        array (
+            'Klein\\' => 6,
+        ),
+        'I' => 
+        array (
+            'Interop\\Container\\' => 18,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'DI\\' => 3,
         ),
     );
 
@@ -43,6 +68,14 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'Zend\\EventManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-eventmanager/src',
+        ),
+        'Zend\\Code\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-code/src',
         ),
         'Whoops\\' => 
         array (
@@ -64,6 +97,22 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
+        'Klein\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/klein/klein/src/Klein',
+        ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -72,6 +121,18 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src/DI',
+        ),
     );
 
     public static $fallbackDirsPsr4 = array (
@@ -79,6 +140,13 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
     );
 
     public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'UnitTest' => 
+            array (
+                0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/tests',
+            ),
+        ),
         'T' => 
         array (
             'Twig_' => 
@@ -88,9 +156,24 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         ),
         'P' => 
         array (
+            'ProxyManager\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
+            ),
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+            'PhpDocReader' => 
+            array (
+                0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
         ),
         'B' => 

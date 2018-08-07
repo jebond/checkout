@@ -6,7 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'UnitTest' => array($vendorDir . '/php-di/phpdoc-reader/tests'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
+    'ProxyManager\\' => array($vendorDir . '/ocramius/proxy-manager/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'PhpDocReader' => array($vendorDir . '/php-di/phpdoc-reader/src'),
+    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
     'Buzz' => array($vendorDir . '/kriswallsmith/buzz/lib'),
 );

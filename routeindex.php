@@ -3,8 +3,36 @@
     require 'vendor/autoload.php';
     use Controller\checkout;
     use Controller\action;
+    //use Klein\Klein;
+    use ErrorHandling\ErrorHandling;
 
-$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+   // $router = new Klein();
+    $error = new ErrorHandling();
+
+    /*try{
+        $router->respond('GET','/hello',function () {
+            return 'hello';
+        });
+
+        $router->respond('GET','/checkout/[:orderid]',function ($request) {
+        $controller = new checkout();
+        if(isset($request->orderid)){
+            $controller->showview($request->orderid);
+        } else {
+            $controller->notfound("Order id not found");
+        }
+    });
+
+    $router->respond('GET','/checkout',function () {
+        $controller = new checkout();
+            $message = 'Not Found Weirdo';
+            $controller->notfound($message);
+});}
+    catch (\Exception $e) {
+        throw new \RuntimeException("DAMN! You did it Now");
+    }*/
+
+    $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
 // Route it up!
     try{

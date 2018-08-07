@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
     'ed250cec81cd1fa5b486e051fca67623' => $vendorDir . '/filp/whoops/src/Whoops/functions.php',
+    'bbf73f3db644d3dced353b837903e74c' => $vendorDir . '/php-di/php-di/src/DI/functions.php',
 );
