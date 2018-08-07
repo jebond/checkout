@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,10 +33,10 @@
                 {% for item in cartitems %}
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">{{ item.name }}</h6>
-                        <small class="text-muted">{{ item.description }}</small>
+                        <h6 class="my-0"> {{ item.name }} </h6>
+                        <small class="text-muted"> {{ item.description }} </small>
                     </div>
-                    <span class="text-muted">{{ item.price }}</span>
+                    <span class="text-muted"> {{ item.price }} </span>
                 </li>
                 {% endfor %}
                 <li class="list-group-item d-flex justify-content-between">
