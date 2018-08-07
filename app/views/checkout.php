@@ -10,17 +10,17 @@
     <title>Troll and Toad Checkout</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{baseurl}}assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/form-validation.css" rel="stylesheet">
+    <link href="{{baseurl}}assets/css/form-validation.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
 
 <div class="container">
     <div class="justify-content-center text-center">
-        <img src="assets/img/trollAndToadLogo.png" class="img-fluid" height="auto">
+        <img src="{{baseurl}}assets/img/trollAndToadLogo.png" class="img-fluid" height="auto">
         <span>Your order id is: {{orderid}}</span>
     </div>
 
@@ -233,11 +233,11 @@
     </footer>
 </div>
 
-    <script src="assets/js/jquery.slim.min.js" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/jquery.slim.min.js"><\/script>')</script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/holder.min.js"></script>
+    <script src="{{baseurl}}assets/js/jquery.slim.min.js" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{{baseurl}}assets/js/jquery.slim.min.js"><\/script>')</script>
+    <script src="{{baseurl}}assets/js/popper.min.js"></script>
+    <script src="{{baseurl}}assets/js/bootstrap.min.js"></script>
+    <script src="{{baseurl}}assets/js/holder.min.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {

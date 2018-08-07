@@ -12,13 +12,12 @@ namespace Controller {
             $twig = new Twig\Environment($loader);
             try{
                 $view = $twig->load('checkout.php');
-                echo $view->render(array('orderid'=>$orderid));
+                echo $view->render(array('orderid'=>$orderid,'baseurl'=>'http://localhost/'));
             }
             catch (\Exception $ex){
                 throw new \RuntimeException("cant render template, man!");
             }
 
-            require 'app/views/checkout.php';
         }
 
         public function notfound($message)
