@@ -1,3 +1,1 @@
-<?php
-echo "action";
-echo "<img src='../views/assets/img/trollAndToadLogo.png'/>";
+<h1>{{message}}</h1>;

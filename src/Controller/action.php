@@ -1,20 +1,47 @@
 <?php
 namespace Controller {
+
+    use Twig;
+
     class action
     {
-        public function transactionSearch($transactionid)
+        public function transactionSearch($message)
         {
-            require 'app/views/checkout.php';
+            $loader = new \Twig_Loader_Filesystem('app/views');
+            $twig = new Twig\Environment($loader);
+            try{
+                $view = $twig->load('action.php');
+                echo $view->render(array('message'=>$message));
+            }
+            catch (\Exception $ex){
+                throw new \RuntimeException("cant render template, man!");
+            }
         }
 
-        public function batchsettlement(){
-            //do some stuff;
-            echo "<h1>Batch Settlement</h1>";
+        public function batchsettlement($message){
+
+            $loader = new \Twig_Loader_Filesystem('app/views');
+            $twig = new Twig\Environment($loader);
+            try{
+                $view = $twig->load('action.php');
+                echo $view->render(array('message'=>$message));
+            }
+            catch (\Exception $ex){
+                throw new \RuntimeException("cant render template, man!");
+            }
         }
 
         public function notfound($message)
         {
-            require 'app/views/404.php';
+            $loader = new \Twig_Loader_Filesystem('app/views');
+            $twig = new Twig\Environment($loader);
+            try{
+                $view = $twig->load('action.php');
+                echo $view->render(array('message'=>$message));
+            }
+            catch (\Exception $ex){
+                throw new \RuntimeException("cant render template, man!");
+            }
         }
     }
 }

@@ -17,12 +17,19 @@ namespace Controller {
             catch (\Exception $ex){
                 throw new \RuntimeException("cant render template, man!");
             }
-
         }
 
         public function notfound($message)
         {
-            require 'app/views/badrequest.php';
+            $loader = new \Twig_Loader_Filesystem('app/views');
+            $twig = new Twig\Environment($loader);
+            try{
+                $view = $twig->load('badrequest.php');
+                echo $view->render(array('message'=>'Order ID not passed or not found!'));
+            }
+            catch (\Exception $ex){
+                throw new \RuntimeException("cant render template, man!");
+            }
         }
     }
 }

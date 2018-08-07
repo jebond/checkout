@@ -35,9 +35,20 @@
             $controller->notfound($message);
     });
 
-    $router->respond('GET','/action/[:action]',function ($request) {
+    $router->respond('GET','/action/[:action]/[:parameter]',function ($request) {
         $controller = new action();
-            $controller->batchsettlement();
+        switch ($request->action){
+            case $action = 'batch';
+                $controller->batchsettlement("This was a batch settlement for batch ".$request->parameter);
+                break;
+            case $action = 'search';
+                $controller->transactionSearch("This was a search transaction ".$request->parameter);
+                break;
+            default:
+                $controller->notfound("Action not found");
+                break;
+        }
+
         });
 
     $router->respond('GET','/action',function ($request) {
