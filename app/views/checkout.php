@@ -21,6 +21,7 @@
 <div class="container">
     <div class="justify-content-center text-center">
         <img src="assets/img/trollAndToadLogo.png" class="img-fluid" height="auto">
+        <span>Your order id is: {{orderid}}</span>
     </div>
 
     <div class="row">

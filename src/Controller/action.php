@@ -9,7 +9,7 @@ namespace Controller {
 
         public function batchsettlement(){
             //do some stuff;
-            echo "Dang";
+            echo "<h1>Batch Settlement</h1>";
         }
 
         public function notfound($message)

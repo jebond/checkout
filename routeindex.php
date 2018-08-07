@@ -1,20 +1,26 @@
 <?php
 
     require 'vendor/autoload.php';
+    /*
+     *  This using section will be replaced with an app object that will create a di container. All of these objects will be passed into the container and then referenced in the app.
+     *  the system class will create the container and should be global namespaced and psr-4 autoloaded.
+     */
     use Controller\checkout;
     use Controller\action;
-    //use Klein\Klein;
+    use Klein\Klein;
     use ErrorHandling\ErrorHandling;
 
-   // $router = new Klein();
+    /*
+     * These object creation statements should go away once the DI container is created. The controller will be passed instances of any classes it requires like the router
+     * the error handling and the controller classes.
+     */
+
+    $router = new Klein();
     $error = new ErrorHandling();
 
-    /*try{
-        $router->respond('GET','/hello',function () {
-            return 'hello';
-        });
+    try{
 
-        $router->respond('GET','/checkout/[:orderid]',function ($request) {
+     $router->respond('GET','/checkout/[:orderid]',function ($request) {
         $controller = new checkout();
         if(isset($request->orderid)){
             $controller->showview($request->orderid);
@@ -27,40 +33,22 @@
         $controller = new checkout();
             $message = 'Not Found Weirdo';
             $controller->notfound($message);
-});}
-    catch (\Exception $e) {
-        throw new \RuntimeException("DAMN! You did it Now");
-    }*/
+    });
 
-    $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
-
-// Route it up!
-    try{
-    switch ($request_uri[0]) {
-        // main checkout
-        case '/checkout':
-            $controller = new checkout();
-            if(isset($request_uri[1])){
-                $controller->showview($request_uri[1]);
-            } else {
-                $controller->notfound("Order id not found");
-            }
-            break;
-        // backend api endpoint
-        case '/action':
-            $controller = new action();
+    $router->respond('GET','/action/[:action]',function ($request) {
+        $controller = new action();
             $controller->batchsettlement();
-            break;
-        case '/exception':
-            throw new \RuntimeException("DAMN! You did it Now");
-            break;
-        // Everything else
-        default:
-            header('HTTP/1.0 404 Not Found');
-            require 'app/views/404.php';
-            break;
+        });
+
+    $router->respond('GET','/action',function ($request) {
+        $controller = new action();
+            $message = 'Action not found';
+            $controller->notfound($message);
+        });
+
+        $router->dispatch();
+
     }
-}
     catch (\Exception $e) {
-        throw new \RuntimeException("DAMN! You did it Now");
+        throw new \RuntimeException("You did it Now");
     }
