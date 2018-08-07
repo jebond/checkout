@@ -10,9 +10,10 @@ namespace Controller {
         {
             $loader = new \Twig_Loader_Filesystem('app/views');
             $twig = new Twig\Environment($loader);
+            $itemarray = array('description'=>'Test description 1','name'=>'Test Item 1','price'=>12);
             try{
                 $view = $twig->load('checkout.php');
-                echo $view->render(array('orderid'=>$orderid,'baseurl'=>'http://localhost/'));
+                echo $view->render(array('orderid'=>$orderid,'cartitems'=>$itemarray,'baseurl'=>'http://localhost/'));
             }
             catch (\Exception $ex){
                 throw new \RuntimeException("cant render template, man!");
