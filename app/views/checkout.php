@@ -20,7 +20,6 @@
 <div class="container">
     <div class="justify-content-center text-center">
         <img src="{{baseurl}}assets/img/trollAndToadLogo.png" class="img-fluid" height="auto">
-
     </div>
 
     <div class="row">
@@ -30,18 +29,18 @@
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-                {% for item in cartitems %}
+                {% for cartitem in cart %}
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0"> {{ item.name }} </h6>
-                        <small class="text-muted"> {{ item.description }} </small>
+                        <h6 class="my-0"> {{ cartitem.name }} </h6>
+                        <small class="text-muted"> {{ cartitem.description }} </small>
                     </div>
-                    <span class="text-muted"> {{ item.price }} </span>
+                    <span class="text-muted"> {{ cartitem.price }} </span>
                 </li>
                 {% endfor %}
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (USD)</span>
-                    <strong>$20</strong>
+                    <strong>{{ total }}</strong>
                 </li>
             </ul>
 
