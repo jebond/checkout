@@ -1,53 +1,40 @@
 <?php
 
     require 'vendor/autoload.php';
-    require 'src/System/App.php';
     /*
      *  This using section will be replaced with an app object that will create a di container. All of these objects will be passed into the container and then referenced in the app.
      *  the system class will create the container and should be global namespaced and psr-4 autoloaded.
      */
     use Controller\checkout;
     use Controller\action;
-    use Klein\Klein;
-    use ErrorHandling\ErrorHandling;
-    use Monolog\Logger;
-    use Monolog\Handler\StreamHandler;
 
     /*
      * These object creation statements should go away once the DI container is created. The controller will be passed instances of any classes it requires like the router
      * the error handling and the controller classes.
      */
 
-        $router = new Klein();
-        $error = new ErrorHandling();
-        $system = new App();
+    $builder = new \DI\ContainerBuilder();
+    $container = $builder->build();
+    try{
+        $System = $container->make('System');
+    } catch(Exception $ex){
+        throw new \RuntimeException($ex->getMessage());
+    }
 
+     $System->router->respond('GET','/checkout/[:orderid]',function ($request) {
 
-     $router->respond('GET','/checkout/[:orderid]',function ($request) {
         $controller = new checkout();
-        if(isset($request->orderid)){
             $controller->showview($request->orderid);
-        } else {
-            try {
-                $log = new Logger('error');
-                $log->pushHandler(new StreamHandler(__DIR__.'/checkout.log', Logger::DEBUG));
-                $log->alert('Whoa...an error');
-                $log->info('Order ID not found');
-            }
-            catch(\Exception $ex){
-                throw new \RuntimeException($ex->getMessage());
-            }
             $controller->notfound("Order id not found");
-        }
-    });
+     });
 
-    $router->respond('GET','/checkout',function () {
+    $System->router->respond('GET','/checkout',function () {
         $controller = new checkout();
             $message = 'Not Found Weirdo';
             $controller->notfound($message);
     });
 
-    $router->respond('GET','/action/[:action]/[:parameter]',function ($request) {
+    $System->router->respond('GET','/action/[:action]/[:parameter]',function ($request) {
         $controller = new action();
         switch ($request->action){
             case $action = 'batch';

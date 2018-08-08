@@ -1,11 +1,20 @@
 <?php
 use ErrorHandling\ErrorHandling;
-use Twig;
+use Klein\Klein;
+
+
 class System
 {
-    public function __construct(ErrorHandling $handler,Twig\Environment $twig)
+    public $Log;
+    public $Twig;
+    public $Klein;
+    public $Handler;
+
+    public function __construct(ErrorHandling $handler,Twig\Environment $twig,Klein $klein,Monolog\Logger $logger)
     {
-        echo isset($handler);
-        echo isset($twig);
+        $this->Klein = $klein;
+        $this->Handler = $handler;
+        $this->Twig = $twig;
+        $this->Log = $logger;
     }
 }
