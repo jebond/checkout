@@ -7,7 +7,7 @@
      */
     use Controller\checkout;
     use Controller\action;
-    use \System;
+
 
     /*
      * These object creation statements should go away once the DI container is created. The controller will be passed instances of any classes it requires like the router
@@ -17,7 +17,7 @@
     $builder = new \DI\ContainerBuilder();
     $container = $builder->build();
     try{
-        $System = $container->make('System');
+        $System = $container->get('System');
     } catch(Exception $ex){
         throw new \RuntimeException($ex->getMessage());
     }

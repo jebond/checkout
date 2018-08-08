@@ -12,5 +12,6 @@ class ErrorHandling
         $whoops = new Run();
         $whoops->pushHandler(new PrettyPageHandler());
         $whoops->register();
+        return $whoops;
     }
 }
