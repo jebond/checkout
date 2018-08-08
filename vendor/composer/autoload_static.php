@@ -38,11 +38,13 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
         ),
         'M' => 
         array (
             'MyCLabs\\Enum\\' => 13,
+            'Monolog\\' => 8,
         ),
         'K' => 
         array (
@@ -97,6 +99,10 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -104,6 +110,10 @@ class ComposerStaticInitc938dbec9498f119d312796e792a64b4
         'MyCLabs\\Enum\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Klein\\' => 
         array (

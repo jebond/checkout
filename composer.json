@@ -16,8 +16,8 @@
         "twig/twig": "1.35.4",
         "filp/whoops":"2.0.0-alpha1",
         "php-di/php-di":"4.4.10",
-        "klein/klein": "^2.1"
-
+        "klein/klein": "^2.1",
+        "monolog/monolog": "^1.23"
 
     },
     "autoload": {

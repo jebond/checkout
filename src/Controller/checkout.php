@@ -15,7 +15,6 @@ namespace Controller {
             $twig = new Twig\Environment($loader,array('debug' => true));
             $twig->addExtension(new \Twig_Extension_Debug());
             $itemarray = array();
-            $itemcount = array();
             $ordershipping = 25.11;
             $total = 0;
             array_push($itemarray,array('description'=>'Test description 1','name'=>'Test Item 1','price'=>44.16));
