@@ -33,7 +33,7 @@ namespace Controller {
                 echo $view->render(array('orderid'=>$orderid,'cart'=>$itemarray,'baseurl'=>'http://localhost/','total'=>(float)$total,'itemcount'=>$itemcount,'shipping'=>$ordershipping,'finaltotal'=>$finaltotal));
             }
             catch (\Exception $ex){
-                throw new \RuntimeException("cant render template, man!");
+                throw new \RuntimeException("can't render template, man!");
             }
         }
 

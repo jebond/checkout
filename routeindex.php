@@ -10,22 +10,33 @@
     use Controller\action;
     use Klein\Klein;
     use ErrorHandling\ErrorHandling;
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
 
     /*
      * These object creation statements should go away once the DI container is created. The controller will be passed instances of any classes it requires like the router
      * the error handling and the controller classes.
      */
 
-    $router = new Klein();
-    $error = new ErrorHandling();
+        $router = new Klein();
+        $error = new ErrorHandling();
+        $system = new App();
 
-    try{
 
      $router->respond('GET','/checkout/[:orderid]',function ($request) {
         $controller = new checkout();
         if(isset($request->orderid)){
             $controller->showview($request->orderid);
         } else {
+            try {
+                $log = new Logger('error');
+                $log->pushHandler(new StreamHandler(__DIR__.'/checkout.log', Logger::DEBUG));
+                $log->alert('Whoa...an error');
+                $log->info('Order ID not found');
+            }
+            catch(\Exception $ex){
+                throw new \RuntimeException($ex->getMessage());
+            }
             $controller->notfound("Order id not found");
         }
     });
@@ -59,8 +70,3 @@
         });
 
         $router->dispatch();
-
-    }
-    catch (\Exception $e) {
-        throw new \RuntimeException($e->getMessage());
-    }
