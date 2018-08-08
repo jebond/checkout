@@ -1,6 +1,7 @@
 <?php
 
     require 'vendor/autoload.php';
+    require 'src/System/App.php';
     /*
      *  This using section will be replaced with an app object that will create a di container. All of these objects will be passed into the container and then referenced in the app.
      *  the system class will create the container and should be global namespaced and psr-4 autoloaded.

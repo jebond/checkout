@@ -7,6 +7,13 @@ class App
 
     function __construct()
     {
-        $this->registry = new Container();
+        $this->registry = new Container($definitionmanager = null,$proxyfactory = null);
+        try{
+            $system = $this->registry->get('System');
+            require 'app/views/badrequest.php';
+        } catch (Exception $ex) {
+            throw new \RuntimeException($ex->getMessage());
+        }
+
     }
 }

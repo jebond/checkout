@@ -5,9 +5,10 @@ use Controller\interfaces\IController;
 use twig;
 abstract class AbsCkeckoutController implements IController
 {
+
     function __construct()
     {
-      //  $template = new twig->twig\;
+
     }
 
     public function showview($orderid)

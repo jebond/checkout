@@ -26,7 +26,7 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your Cart for Order Id {{orderid}}</span>
-                <span class="badge badge-secondary badge-pill">3</span>
+                <span class="badge badge-secondary badge-pill">{{itemcount}}</span>
             </h4>
             <ul class="list-group mb-3">
                 {% for cartitem in cart %}
@@ -35,23 +35,23 @@
                         <h6 class="my-0"> {{ cartitem.name }} </h6>
                         <small class="text-muted"> {{ cartitem.description }} </small>
                     </div>
-                    <span class="text-muted"> {{ cartitem.price }} </span>
+                    <span class="text-muted"> ${{ cartitem.price }} </span>
                 </li>
                 {% endfor %}
                 <li class="list-group-item d-flex justify-content-between">
+                    <span>Sub Total (USD)</span>
+                    <span class="text-muted">${{ total }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping (USD)</span>
+                    <span class="text-muted">${{ shipping }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
                     <span>Total (USD)</span>
-                    <strong>{{ total }}</strong>
+                    <strong>${{ finaltotal }}</strong>
                 </li>
             </ul>
 
-            <form class="card p-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Promo code">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-secondary">Redeem</button>
-                    </div>
-                </div>
-            </form>
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
