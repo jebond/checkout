@@ -5,14 +5,21 @@ use Twig;
 
 class ViewEngine
 {
-    /**
-     * ViewEngine constructor.
-     */
-    public function __construct()
-{
-    $loader = new \Twig_Loader_Filesystem('app/views');
-    $twig = new Twig\Environment($loader,array('debug' => true));
-    $twig->addExtension(new \Twig_Extension_Debug());
-    return $twig;
-}
+    private $twig;
+
+    public function __construct($viewname = null)
+    {
+        $loader = new \Twig_Loader_Filesystem('app/views');
+        $this->twig = new Twig\Environment($loader,array('debug' => true));
+        $this->twig->addExtension(new \Twig_Extension_Debug());
+        if($viewname === null){
+            return null;
+        }
+        else{
+            return $this->twig->load($viewname);
+        }
+    }
+    public function render(array $viewoptions){
+        $this->twig->render($viewoptions);
+    }
 }

@@ -24,8 +24,8 @@ namespace System {
             return $this->ErrorHandler;
         }
 
-        public function getViewEngine(){
-            return $this->ViewEngine;
+        public function getViewEngine($viewname){
+            return new $this->ViewEngine($viewname);
         }
 
         public function getRouter(){

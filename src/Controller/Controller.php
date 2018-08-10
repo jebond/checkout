@@ -3,7 +3,6 @@ namespace Controller {
 
     use Controller\ClassAbstract\AbsCkeckoutController;
     use System\System;
-    use Twig;
 
     class Controller extends AbsCkeckoutController
     {
@@ -15,7 +14,7 @@ namespace Controller {
         public function __construct(System $System)
         {
             $this->System = $System;
-            $this->ViewEngine = $System->getViewEngine();
+            $this->ViewEngine = $System->getViewEngine('checkout.php');
         }
 
         /**
@@ -38,7 +37,9 @@ namespace Controller {
             $itemcount = sizeof($itemarray);
 
             try{
-                $view = $this->ViewEngine->load('checkout.php');
+                //var_dump(get_class_methods($this->ViewEngine));
+                //exit();
+                $view = $this->System->getViewEngine('checkout.php');
                 echo $view->render(array('orderid'=>$orderid,'cart'=>$itemarray,'baseurl'=>'http://localhost/','total'=>(float)$total,'itemcount'=>$itemcount,'shipping'=>$ordershipping,'finaltotal'=>$finaltotal));
             }
             catch (\Exception $ex){
@@ -48,10 +49,8 @@ namespace Controller {
 
         public function Action($action,$transactionid,$batchid)
         {
-            $this->viewEngine = $this->System->getViewEngine();
-
             try{
-                $view = $this->viewEngine->load('action.php');
+                $view = $this->System->getViewEngine('action.php');
                 echo $view->render(array('data'=>'test'));
             }
             catch (\Exception $ex){
@@ -62,7 +61,7 @@ namespace Controller {
         public function notfound($message)
         {
             try{
-                $view = $this->viewEngine->load('badrequest.php');
+                $view = $this->System->getViewEngine('badrequest.php');
                 echo $view->render(array('message'=>'Order ID not passed or not found!'));
             }
             catch (\Exception $ex){
