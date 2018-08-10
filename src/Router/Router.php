@@ -5,7 +5,6 @@ namespace Router;
 class Router
 {
     private $System = null;
-    private $Controller = null;
     private $container = null;
     private $builder = null;
     private $router = null;
@@ -25,24 +24,22 @@ class Router
         }
 
         try {
-            $this->Controller = $this->container->get('Controller\Controller');
+            $Controller = $this->container->get('Controller\Controller');
         } catch (Exception $ex) {
             throw new \RuntimeException('Died creating controller object with injection');
         }
 
         $this->router = $this->System->getRouter();
 
-        $this->router->respond('GET', '/checkout/[:orderid]', function ($request) {
-            $this->Controller->Checkout($request->orderid);
+        $this->router->respond('GET', '/checkout/[:orderid]', function ($request) use ($Controller) {
+            $Controller->Checkout($request->orderid);
         });
 
-        $this->router->respond('GET', '/checkout', function () {
-            // $controller = new checkout();
-            // $message = 'Not Found Weirdo';
-            // $controller->notfound($message);
+        $this->router->respond('GET', '/checkout', function () use ($Controller) {
+            $Controller->notfound($message);
         });
 
-        $this->router->respond('GET', '/action/[:action]/[:parameter]', function ($request) {
+        $this->router->respond('GET', '/action/[:action]/[:parameter]', function ($request) use ($Controller) {
             /*$controller = new action();
             switch ($request->action) {
                 case $action = 'batch';
