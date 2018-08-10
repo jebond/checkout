@@ -36,28 +36,17 @@ class Router
         });
 
         $this->router->respond('GET', '/checkout', function () use ($Controller) {
+            $message = 'Order id Not defined';
             $Controller->notfound($message);
         });
 
         $this->router->respond('GET', '/action/[:action]/[:parameter]', function ($request) use ($Controller) {
-            /*$controller = new action();
-            switch ($request->action) {
-                case $action = 'batch';
-                    $controller->batchsettlement("This was a batch settlement for batch " . $request->parameter);
-                    break;
-                case $action = 'search';
-                    $controller->transactionSearch("This was a search transaction " . $request->parameter);
-                    break;
-                default:
-                    $controller->notfound("Action not found");
-                    break;
-            }*/
+            $Controller->action($request->action,$request->parameter);
         });
 
-        $this->router->respond('GET', '/action', function ($request) {
-            /*$controller = new action();
-            $message = 'Action not found';
-            $controller->notfound($message);*/
+        $this->router->respond('GET', '/action', function ($request) use ($Controller){
+            $message = 'Action Not specified';
+            $Controller->notfound($message);
         });
 
         $this->router->dispatch();

@@ -6,14 +6,16 @@ namespace Controller {
 
     class Controller extends AbsCkeckoutController
     {
-        private $System;
-        private $ViewEngine;
+        protected $System;
+        protected $ViewEngine;
+        protected $ErrorLog;
         /**
          * @param System $System;
          */
         public function __construct(System $System)
         {
             $this->System = $System;
+            $this->ErrorLog = $this->System->getErrorLogger();
         }
 
         /**
@@ -49,19 +51,21 @@ namespace Controller {
                 echo $this->ViewEngine;
             }
             catch (\Exception $ex){
-                throw new \RuntimeException("can't render template, man!");
+                $this->ErrorLog->logError($ex->getMessage());
+                throw new \RuntimeException("can't render template, man! Check error log for more information");
             }
         }
 
-        public function Action($action,$transactionid,$batchid)
+        public function Action($action,$transactionid = null,$batchid = null)
         {
             $viewoptions = array('action'=>$action,'transactionid'=>$transactionid,'batchid'=>$batchid);
 
             try{
-                $view = $this->System->getViewEngine('action.php',$viewoptions);
-                echo $view->render(array('data'=>'test'));
+                $this->ViewEngine = $this->System->getViewEngine('action.php',$viewoptions);
+                echo $this->ViewEngine;
             }
             catch (\Exception $ex){
+                $this->ErrorLog->logError($ex->getMessage());
                 throw new \RuntimeException("can't render template, man!");
             }
         }
@@ -69,10 +73,11 @@ namespace Controller {
         public function notfound($message)
         {
             try{
-                $view = $this->System->getViewEngine('badrequest.php');
-                echo $view->render(array('message'=>'Order ID not passed or not found!'));
+                $this->ViewEngine = $this->System->getViewEngine('badrequest.php',array('message'=>$message));
+                echo $this->ViewEngine;
             }
             catch (\Exception $ex){
+                $this->ErrorLog->logError($ex->getMessage());
                 throw new \RuntimeException("cant render template, man!");
             }
         }

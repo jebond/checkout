@@ -1,15 +1,27 @@
 <?php
 
 namespace ErrorLogging;
-use Monolog;
+use Monolog\Logger;
+use Monolog\Handler;
 
 class ErrorLogging
 {
-    public $logger;
+    protected $logger;
+    protected $stream;
 
     public function __construct()
     {
-        $this->logger = new Monolog\Logger('ErrorLog');
+        $this->stream = new Handler\StreamHandler($_SERVER['DOCUMENT_ROOT'].'/app/log/checkout.log',LOGGER::DEBUG);
+        $this->logger = new Logger('ErrorLog');
+        $this->logger->pushHandler($this->stream);
         return $this->logger;
+    }
+
+    public function logDebug($error){
+        $this->logger->debug($error);
+    }
+
+    public function logError($error){
+        $this->logger->debug($error);
     }
 }
