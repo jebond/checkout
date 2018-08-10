@@ -5,7 +5,10 @@ use Twig;
 
 class ViewEngine
 {
-public function __construct()
+    /**
+     * ViewEngine constructor.
+     */
+    public function __construct()
 {
     $loader = new \Twig_Loader_Filesystem('app/views');
     $twig = new Twig\Environment($loader,array('debug' => true));

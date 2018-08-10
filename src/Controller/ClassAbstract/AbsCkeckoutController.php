@@ -11,15 +11,18 @@ abstract class AbsCkeckoutController implements IController
 
     }
 
-    public function showview($orderid)
-    {
-        // TODO: Implement showview() method.
-    }
-
     public function notfound($message)
     {
-        // TODO: Implement notfound() method.
+
     }
 
+    public function Checkout($orderid)
+    {
 
+    }
+
+    public function Action($action,$transactionid,$batchid)
+    {
+
+    }
 }

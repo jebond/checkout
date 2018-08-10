@@ -3,24 +3,37 @@
 namespace System {
     use ErrorHandling\ErrorHandling;
     use Klein\Klein;
-    use Monolog;
+    use ErrorLogging;
     use ViewEngine\ViewEngine;
 
     class System
     {
-        public $Log;
-        public $Twig;
-        public $Klein;
-        public $Handler;
-        public $retArr =array();
+        private $ErrorLogger;
+        private $ViewEngine;
+        private $Router;
+        private $ErrorHandler;
 
-        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, Monolog\Logger $logger) {
-            $this->Klein = $klein;
-            $this->Handler = $handler;
-            $this->Twig = $view;
-            $this->Log = $logger;
-            $this->retArr= array($this->Klein,$this->Twig,$this->Log,$this->Handler);
-            return $this->retArr;
+        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger) {
+            $this->Router = $klein;
+            $this->ErrorHandler = $handler;
+            $this->ViewEngine = $view;
+            $this->ErrorLogger = $logger;
+        }
+
+        public function getErrorHandler(){
+            return $this->ErrorHandler;
+        }
+
+        public function getViewEngine(){
+            return $this->ViewEngine;
+        }
+
+        public function getRouter(){
+            return $this->Router;
+        }
+
+        public function getErrorLogger(){
+            return $this->ErrorLogger;
         }
     }
 }
