@@ -56,9 +56,9 @@ namespace Controller {
             }
         }
 
-        public function Action($action,$transactionid = null,$batchid = null)
+        public function Action($action,$parameter)
         {
-            $viewoptions = array('action'=>$action,'transactionid'=>$transactionid,'batchid'=>$batchid);
+            $viewoptions = array('action'=>$action,'parameter'=>$parameter);
 
             try{
                 $this->ViewEngine = $this->System->getViewEngine('action.php',$viewoptions);

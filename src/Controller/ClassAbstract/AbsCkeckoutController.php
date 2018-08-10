@@ -21,7 +21,7 @@ abstract class AbsCkeckoutController implements IController
 
     }
 
-    public function Action($action,$transactionid,$batchid)
+    public function Action($action,$parameter)
     {
 
     }
