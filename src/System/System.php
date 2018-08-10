@@ -5,19 +5,25 @@ namespace System {
     use Klein\Klein;
     use ErrorLogging;
     use ViewEngine\ViewEngine;
+    use TNTDatabase\TNTDatabase;
+    use TNTShipping\TNTShipping;
 
     class System
     {
-        private $ErrorLogger;
-        private $ViewEngine;
-        private $Router;
-        private $ErrorHandler;
+        protected $ErrorLogger;
+        protected $ViewEngine;
+        protected $Router;
+        protected $ErrorHandler;
+        protected  $TNTDb;
+        protected $TNTShip;
 
-        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger) {
+        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger,TNTDatabase $TntDb, TNTShipping $TntShip) {
             $this->Router = $klein;
             $this->ErrorHandler = $handler;
             $this->ViewEngine = $view;
             $this->ErrorLogger = $logger;
+            $this->TNTDb = $TntDb;
+            $this->TNTShip = $TntShip;
         }
 
         public function getErrorHandler(){
@@ -35,6 +41,14 @@ namespace System {
 
         public function getErrorLogger(){
             return $this->ErrorLogger;
+        }
+
+        public function getTNTDB(){
+            return $this->TNTDb;
+        }
+
+        public function getTNTShip(){
+            return $this->TNTShip;
         }
     }
 }
