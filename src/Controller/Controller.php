@@ -14,7 +14,6 @@ namespace Controller {
         public function __construct(System $System)
         {
             $this->System = $System;
-            $this->ViewEngine = $System->getViewEngine('checkout.php');
         }
 
         /**
@@ -36,11 +35,18 @@ namespace Controller {
             $finaltotal = $total + $ordershipping;
             $itemcount = sizeof($itemarray);
 
+            $viewoptions = array(
+                'orderid'=>$orderid,
+                'cart'=>$itemarray,
+                'baseurl'=>'http://localhost/',
+                'total'=>(float)$total,
+                'itemcount'=>$itemcount,
+                'shipping'=>$ordershipping,
+                'finaltotal'=>$finaltotal);
+
             try{
-                //var_dump(get_class_methods($this->ViewEngine));
-                //exit();
-                $view = $this->System->getViewEngine('checkout.php');
-                echo $view->render(array('orderid'=>$orderid,'cart'=>$itemarray,'baseurl'=>'http://localhost/','total'=>(float)$total,'itemcount'=>$itemcount,'shipping'=>$ordershipping,'finaltotal'=>$finaltotal));
+                $this->ViewEngine = $this->System->getViewEngine('checkout.php',$viewoptions);
+                echo $this->ViewEngine;
             }
             catch (\Exception $ex){
                 throw new \RuntimeException("can't render template, man!");
@@ -49,8 +55,10 @@ namespace Controller {
 
         public function Action($action,$transactionid,$batchid)
         {
+            $viewoptions = array('action'=>$action,'transactionid'=>$transactionid,'batchid'=>$batchid);
+
             try{
-                $view = $this->System->getViewEngine('action.php');
+                $view = $this->System->getViewEngine('action.php',$viewoptions);
                 echo $view->render(array('data'=>'test'));
             }
             catch (\Exception $ex){
