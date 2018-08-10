@@ -49,6 +49,11 @@ class Router
             $Controller->notfound($message);
         });
 
+        $this->router->respond('GET','/[:nonmatching]',function ($request) use ($Controller){
+            $message = 'Request for ' . $request->nonmatching . ' is not valid';
+            $Controller->notfound($message);
+        });
+
         $this->router->dispatch();
     }
 }

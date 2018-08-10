@@ -2,9 +2,7 @@
 
 namespace TNTShipping;
 
-use \JsonSerializable;
-
-class TNTShipping implements \JsonSerializable
+class TNTShipping
 {
 public function jsonSerialize()
 {
