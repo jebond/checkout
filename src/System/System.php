@@ -17,6 +17,15 @@ namespace System {
         protected  $TNTDb;
         protected $TNTShip;
 
+        /**
+         * System constructor.
+         * @param ErrorHandling             $handler
+         * @param ViewEngine                $view
+         * @param Klein                     $klein
+         * @param ErrorLogging\ErrorLogging $logger
+         * @param TNTDatabase               $TntDb
+         * @param TNTShipping               $TntShip
+         */
         public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger,TNTDatabase $TntDb, TNTShipping $TntShip) {
             $this->Router = $klein;
             $this->ErrorHandler = $handler;
