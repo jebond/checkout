@@ -1,15 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jebond
- * Date: 8/2/2018
- * Time: 4:06 PM
- */
 
 namespace PaymentProvider;
+use System\System;
 
-
-class PaymentProvider
+class PaymentProvider extends \AbsPaymentProvider
 {
+    function __construct(System $system)
+    {
 
+    }
+
+    function createClient(){
+
+    }
+
+    function ccSale(){
+
+    }
+
+    function ccVoid(){
+
+    }
+
+    function ccCredit(){
+
+    }
 }
