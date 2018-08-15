@@ -6,6 +6,6 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*)  routeindex.php [QSA]
+RewriteRule (.*)  index.php [QSA]
 
 </IfModule>
