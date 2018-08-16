@@ -31,26 +31,21 @@ class Router
 
         $this->router = $this->System->getRouter();
 
-        $this->router->respond('GET', '/checkout/[:orderid]', function ($request) use ($Controller) {
+        $this->router->respond('GET', '/secure/checkout/[:orderid]', function ($request) use ($Controller) {
             $Controller->Checkout($request->orderid);
         });
 
-        $this->router->respond('GET', '/checkout', function () use ($Controller) {
+        $this->router->respond('GET', '/secure/checkout/', function () use ($Controller) {
             $message = 'Order id Not defined';
             $Controller->notfound($message);
         });
 
-        $this->router->respond('GET', '/action/[:action]/[:parameter]', function ($request) use ($Controller) {
+        $this->router->respond('GET', '/secure/checkout/action/[:action]/[:parameter]', function ($request) use ($Controller) {
             $Controller->action($request->action,$request->parameter);
         });
 
-        $this->router->respond('GET', '/action', function ($request) use ($Controller){
+        $this->router->respond('GET', '/secure/checkout/action', function ($request) use ($Controller){
             $message = 'Action Not specified';
-            $Controller->notfound($message);
-        });
-
-        $this->router->respond('GET','/[:nonmatching]',function ($request) use ($Controller){
-            $message = 'Request for ' . $request->nonmatching . ' is not valid';
             $Controller->notfound($message);
         });
 

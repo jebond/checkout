@@ -40,7 +40,7 @@ namespace Controller {
             $viewoptions = array(
                 'orderid'=>$orderid,
                 'cart'=>$itemarray,
-                'baseurl'=>'http://localhost/',
+                'baseurl'=>'https://'.$_SERVER['HTTP_HOST'].'/secure/checkout/app/views/',
                 'total'=>(float)$total,
                 'itemcount'=>$itemcount,
                 'shipping'=>$ordershipping,
