@@ -5,8 +5,7 @@ namespace System {
     use Klein\Klein;
     use ErrorLogging;
     use ViewEngine\ViewEngine;
-    use TNTDatabase\TNTDatabase;
-    use TNTShipping\TNTShipping;
+    use Legacy\LegacyCheckout;
 
     class System
     {
@@ -14,25 +13,21 @@ namespace System {
         protected $ViewEngine;
         protected $Router;
         protected $ErrorHandler;
-        protected  $TNTDb;
-        protected $TNTShip;
-
+        protected $LCheckout;
         /**
          * System constructor.
          * @param ErrorHandling             $handler
          * @param ViewEngine                $view
          * @param Klein                     $klein
          * @param ErrorLogging\ErrorLogging $logger
-         * @param TNTDatabase               $TntDb
-         * @param TNTShipping               $TntShip
+         * @param LegacyCheckout $LCheckout
          */
-        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger,TNTDatabase $TntDb, TNTShipping $TntShip) {
+        public function __construct(ErrorHandling $handler, ViewEngine $view, Klein $klein, ErrorLogging\ErrorLogging $logger,LegacyCheckout $LCheckout) {
             $this->Router = $klein;
             $this->ErrorHandler = $handler;
             $this->ViewEngine = $view;
             $this->ErrorLogger = $logger;
-            $this->TNTDb = $TntDb;
-            $this->TNTShip = $TntShip;
+            $this->LCheckout = $LCheckout;
         }
 
         /**
@@ -66,18 +61,8 @@ namespace System {
             return $this->ErrorLogger;
         }
 
-        /**
-         * @return TNTDatabase
-         */
-        public function getTNTDB(){
-            return $this->TNTDb;
-        }
-
-        /**
-         * @return TNTShipping
-         */
-        public function getTNTShip(){
-            return $this->TNTShip;
+        public function getLCheckout(){
+            return $this->LCheckout;
         }
     }
 }
