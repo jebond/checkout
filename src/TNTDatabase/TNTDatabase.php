@@ -5,5 +5,5 @@ namespace TNTDatabase;
 
 class TNTDatabase
 {
-    
+
 }
